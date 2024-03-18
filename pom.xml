@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>za.co.sindi</groupId>
+	<artifactId>sindi-data-microstream</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Sindi Data Microstream</name>
+	
+	<developers>
+		<developer>
+			<name>Buhake Sindi</name>
+			<timezone>+2</timezone>
+			<roles>
+				<role>PROJECT LEAD</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.report.sourceEncoding>UTF-8</project.report.sourceEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<microstream.storage.version>08.01.01-MS-GA</microstream.storage.version>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<!-- Jakarta EE API -->
+			<dependency>
+				<groupId>jakarta.platform</groupId>
+				<artifactId>jakarta.jakartaee-api</artifactId>
+				<version>10.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>za.co.sindi</groupId>
+				<artifactId>sindi-data</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/one.microstream/microstream-storage-embedded-configuration -->
+			<dependency>
+			    <groupId>one.microstream</groupId>
+			    <artifactId>microstream-storage-embedded-configuration</artifactId>
+			    <version>${microstream.storage.version}</version>
+			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/one.microstream/microstream-integrations-cdi -->
+			<dependency>
+			    <groupId>one.microstream</groupId>
+			    <artifactId>microstream-integrations-cdi</artifactId>
+			    <version>${microstream.storage.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<!-- Jakarta EE API -->
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>za.co.sindi</groupId>
+			<artifactId>sindi-data</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/one.microstream/microstream-storage-embedded-configuration -->
+		<dependency>
+		    <groupId>one.microstream</groupId>
+		    <artifactId>microstream-storage-embedded-configuration</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/one.microstream/microstream-integrations-cdi -->
+		<dependency>
+		    <groupId>one.microstream</groupId>
+		    <artifactId>microstream-integrations-cdi</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.11.0</version>
+					<!-- Tell Maven that this is a Java 17 project -->
+					<!--
+					<configuration>
+						<source>17</source>
+						<target>17</target>
+					</configuration>
+					-->
+				</plugin>
+				
+				<!-- Maven Sources plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.3.0</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				
+				<!-- Maven Javadoc plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.5.0</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<additionalOptions>
+							<additionalOption>-Xdoclint:none</additionalOption>
+						</additionalOptions>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
